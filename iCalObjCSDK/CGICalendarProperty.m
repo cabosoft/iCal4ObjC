@@ -36,6 +36,11 @@
 
 - (void)addParameter:(CGICalendarParameter *)parameter
 {
+	if (self.parameters == nil)
+	{
+		self.parameters = [[NSMutableArray alloc] init];
+	}
+	
     [[self parameters] addObject:parameter];
 }
 
@@ -53,7 +58,7 @@
 {
     CGICalendarParameter *icalProp = [self parameterForName:name];
     if (icalProp == nil) {
-        icalProp = [[[CGICalendarParameter alloc] init] autorelease];
+        icalProp = [[CGICalendarParameter alloc] init];
         [icalProp setName:name];
         [self addParameter:icalProp];
     }
@@ -175,7 +180,7 @@
     for (CGICalendarParameter *icalParam in [self parameters])
         [propertyString appendFormat:@";%@", [icalParam description]];
         
-    [propertyString appendFormat:@"%:%@%@", ((0 < [[self value] length]) ? [self value] : @""), CG_ICALENDAR_CONTENTLINE_TERM];
+    [propertyString appendFormat:@"%%:%@%@", ((0 < [[self value] length]) ? [self value] : @""), CG_ICALENDAR_CONTENTLINE_TERM];
     
     return propertyString;
 }
