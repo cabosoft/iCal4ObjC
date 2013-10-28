@@ -102,7 +102,7 @@
 + (id)contentLineWithString:(NSString *)aString
 {
 	CGICalendarContentLine *icalContentLine = [[CGICalendarContentLine alloc] initWithString:aString];
-	return [icalContentLine autorelease];
+	return icalContentLine;
 }
 
 - (id)init
@@ -125,7 +125,7 @@
 	NSString *nowNewLineString = [aString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 	NSArray *values = [nowNewLineString componentsSeparatedByString:CG_ICALENDAR_CONTENTLINE_DELIM];
 	int valuesCnt = [values count];
-	if (valuesCnt < 2)
+	if (valuesCnt < 2) 
 		return;
 	
 	NSArray *nameParams = [[values objectAtIndex:0] componentsSeparatedByString:CG_ICALENDAR_CONTENTLINE_NAMEPARAM_DELIM];
@@ -138,7 +138,7 @@
 		}
 		CGICalendarParameter *icalParam = [[CGICalendarParameter alloc] initWithString:[nameParams objectAtIndex:n]];
 		[params addObject:icalParam];
-		[icalParam release];
+		icalParam = nil;
 	}
 	[self setParameters:params];
 

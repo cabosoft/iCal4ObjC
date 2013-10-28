@@ -40,6 +40,8 @@
 - (BOOL)isTimezone;
 - (BOOL)isAlarm;
 
+- (BOOL) isFullDay;
+
 - (void)addComponent:(CGICalendarComponent *)component;
 - (void)insertComponent:(CGICalendarComponent *)component atIndex:(NSUInteger)index;
 - (CGICalendarComponent *)componentAtIndex:(NSUInteger)index;
@@ -88,6 +90,9 @@
 // 4.8.1.12 Summary
 - (void)setSummary:(NSString *)value;
 - (NSString *)summary;
+
+- (void)setLocation:(NSString *)value;
+- (NSString *)location;
 
 // 4.8.2.1 Date/Time Completed
 - (void)setCompleted:(NSDate *)value;

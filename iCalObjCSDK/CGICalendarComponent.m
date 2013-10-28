@@ -23,7 +23,7 @@
 
 + (id)componentWithType:(NSString *)aType
 {
-    return [[[CGICalendarComponent alloc] initWithType:aType] autorelease];
+    return [[CGICalendarComponent alloc] initWithType:aType];
 }
 
 + (id)event
@@ -165,7 +165,7 @@
 {
     CGICalendarProperty *icalProp = [self propertyForName:name];
     if (icalProp == nil) {
-        icalProp = [[[CGICalendarProperty alloc] init] autorelease];
+        icalProp = [[CGICalendarProperty alloc] init];
         [icalProp setName:name];
         [self addProperty:icalProp];
     }
@@ -317,6 +317,26 @@
     return [self isType:CG_ICALENDAR_COMPONENT_TYPE_ALARM];
 }
 
+-(BOOL) isFullDay
+{
+	// CG_ICALENDAR_PROERTY_DTSTART
+
+    for (CGICalendarProperty *icalProp in [self properties])
+	{
+        if ([icalProp isName:CG_ICALENDAR_PROERTY_DTSTART])
+		{
+			if (icalProp.parameters.count > 0)
+			{
+				CGICalendarParameter * param = icalProp.parameters.lastObject;
+				return (param.hasName && param.hasValue &&
+							([param.name compare:@"VALUE"] == 0) && ([param.value compare:@"DATE"] == 0));
+			}
+		}
+    }
+	
+    return NO;
+}
+
 #pragma mark -
 #pragma mark String
 
@@ -347,7 +367,7 @@
 {
     CGICalendarProperty *icalProp = [self propertyForName:CG_ICALENDAR_PROERTY_PARTSTAT];
     if (icalProp == nil)
-        icalProp = [[[CGICalendarProperty alloc] init] autorelease];
+        icalProp = [[CGICalendarProperty alloc] init];
     [icalProp setParticipationStatus:status];
 }
 
@@ -358,6 +378,7 @@
         return CGICalendarParticipationStatusUnkown;
     return [icalProp participationStatus];
 }
+
 
 #pragma mark -
 #pragma mark 4.8.1.5 Description
@@ -396,6 +417,16 @@
 - (NSString *)summary
 {
     return [self propertyValueForName:CG_ICALENDAR_PROERTY_SUMMARY];
+}
+
+- (void)setLocation:(NSString *)value
+{
+    [self setPropertyValue:value forName:CG_ICALENDAR_PROERTY_LOCATION];
+}
+
+- (NSString *)location
+{
+    return [self propertyValueForName:CG_ICALENDAR_PROERTY_LOCATION];
 }
 
 #pragma mark -
