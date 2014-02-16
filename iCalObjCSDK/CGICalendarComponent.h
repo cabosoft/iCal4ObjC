@@ -59,8 +59,8 @@
 - (void)setPropertyObject:(id)object forName:(NSString *)name parameterValues:(NSArray *)parameterValues parameterNames:(NSArray *)parameterNames;
 - (void)setPropertyDate:(NSDate *)object forName:(NSString *)name;
 - (void)setPropertyDate:(NSDate *)object forName:(NSString *)name parameterValues:(NSArray *)parameterValues parameterNames:(NSArray *)parameterNames;
-- (void)setPropertyInteger:(int)value forName:(NSString *)name;
-- (void)setPropertyInteger:(int)value forName:(NSString *)name parameterValues:(NSArray *)parameterValues parameterNames:(NSArray *)parameterNames;
+- (void)setPropertyInteger:(NSInteger)value forName:(NSString *)name;
+- (void)setPropertyInteger:(NSInteger)value forName:(NSString *)name parameterValues:(NSArray *)parameterValues parameterNames:(NSArray *)parameterNames;
 - (void)setPropertyFloat:(float)value forName:(NSString *)name;
 - (void)setPropertyFloat:(float)value forName:(NSString *)name parameterValues:(NSArray *)parameterValues parameterNames:(NSArray *)parameterNames;
 
@@ -70,7 +70,7 @@
 
 - (NSString *)propertyValueForName:(NSString *)name;
 - (NSDate *)propertyDateForName:(NSString *)name;
-- (int)propertyIntegerForName:(NSString *)name;
+- (NSInteger)propertyIntegerForName:(NSString *)name;
 - (float)propertyFloatForName:(NSString *)name;
 
 - (NSString *)description;
@@ -84,8 +84,8 @@
 - (NSString *)notes;
 
 // 4.8.1.9 Priority
-- (void)setPriority:(NSUInteger)value;
-- (NSUInteger)priority;
+- (void)setPriority:(NSInteger)value;
+- (NSInteger)priority;
 
 // 4.8.1.12 Summary
 - (void)setSummary:(NSString *)value;
@@ -127,8 +127,8 @@
 - (NSDate *)lastModified;
 
 // 4.8.7.4 Sequence Number
-- (void)setSequenceNumber:(NSUInteger)value;
-- (NSUInteger)sequenceNumber;
+- (void)setSequenceNumber:(NSInteger)value;
+- (NSInteger)sequenceNumber;
 - (void)incrementSequenceNumber;
 
 @end

@@ -70,7 +70,7 @@ enum {
 - (NSArray *)allParameterKeys;
 - (NSString *)parameterValueForName:(NSString *)name;
 - (NSDate *)parameterDateForName:(NSString *)name;
-- (int)parameterIntegerForName:(NSString *)name;
+- (NSUInteger)parameterIntegerForName:(NSString *)name;
 - (float)parameterFloatForName:(NSString *)name;
 
 - (void)setParticipationStatus:(int)value;

@@ -174,7 +174,7 @@
     if ([parameterValues count] != [parameterNames count])
         return;
     
-    for (int n=0; n<[parameterNames count]; n++) {
+    for (NSUInteger n=0; n<[parameterNames count]; n++) {
         NSString *name = [parameterNames objectAtIndex:n];
         id value = [parameterNames objectAtIndex:n];
         [icalProp setParameterObject:value forName:name];
@@ -201,12 +201,12 @@
     [self setPropertyValue:[object descriptionICalendar] forName:name parameterValues:parameterValues parameterNames:parameterNames];
 }
 
-- (void)setPropertyInteger:(int)value forName:(NSString *)name
+- (void)setPropertyInteger:(NSInteger)value forName:(NSString *)name
 {
     [self setPropertyValue:[[NSNumber numberWithInteger:value] stringValue] forName:name];
 }
 
-- (void)setPropertyInteger:(int)value forName:(NSString *)name parameterValues:(NSArray *)parameterValues parameterNames:(NSArray *)parameterNames
+- (void)setPropertyInteger:(NSInteger)value forName:(NSString *)name parameterValues:(NSArray *)parameterValues parameterNames:(NSArray *)parameterNames
 {
     [self setPropertyValue:[[NSNumber numberWithInteger:value] stringValue] forName:name parameterValues:parameterValues parameterNames:parameterNames];
 }
@@ -261,7 +261,7 @@
     return nil;
 }
 
-- (int)propertyIntegerForName:(NSString *)name;
+- (NSInteger)propertyIntegerForName:(NSString *)name;
 {
     for (CGICalendarProperty *icalProp in [self properties]) {
         if ([icalProp isName:name])
@@ -396,12 +396,12 @@
 #pragma mark -
 #pragma mark 4.8.1.9 Priority
 
-- (void)setPriority:(NSUInteger)value
+- (void)setPriority:(NSInteger)value
 {
     [self setPropertyInteger:value forName:CG_ICALENDAR_PROERTY_PRIORITY];
 }
 
-- (NSUInteger)priority
+- (NSInteger)priority
 {
     return [self propertyIntegerForName:CG_ICALENDAR_PROERTY_PRIORITY];
 }
@@ -536,12 +536,12 @@
 #pragma mark -
 #pragma mark 4.8.7.4 Sequence Number
 
-- (void)setSequenceNumber:(NSUInteger)value
+- (void)setSequenceNumber:(NSInteger)value
 {
     [self setPropertyInteger:value forName:CG_ICALENDAR_PROERTY_SEQUENCE];
 }
 
-- (NSUInteger)sequenceNumber
+- (NSInteger)sequenceNumber
 {
     return [self propertyIntegerForName:CG_ICALENDAR_PROERTY_SEQUENCE];
 }

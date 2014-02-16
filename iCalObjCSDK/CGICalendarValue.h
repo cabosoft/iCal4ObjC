@@ -44,7 +44,7 @@ enum {
 - (void)setDate:(NSDate *)value;
 
 - (NSDate *)dateValue;
-- (int)integerValue;
+- (NSUInteger)integerValue;
 - (float)floatValue;
 
 @end

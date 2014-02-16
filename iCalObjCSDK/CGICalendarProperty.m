@@ -150,7 +150,7 @@
     return nil;
 }
 
-- (int)parameterIntegerForName:(NSString *)name;
+- (NSUInteger)parameterIntegerForName:(NSString *)name;
 {
     for (CGICalendarParameter *icalProp in [self parameters]) {
         if ([icalProp isName:name])
