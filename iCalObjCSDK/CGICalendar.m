@@ -85,6 +85,16 @@
              nil]];
 }
 
+- (CGICalendarObject*) newCalendarObject
+{
+	return [[CGICalendarObject alloc] init];
+}
+
+- (CGICalendarComponent*) newCalendarComponent
+{
+	return [[CGICalendarComponent alloc] init];
+}
+
 - (BOOL)parseWithString:(NSString *)aString error:(NSError **)error
 {
     [self setObjects:[NSMutableArray array]];
@@ -119,11 +129,11 @@
         if ([icalContentLine isBegin]) {
             CGICalendarComponent *icalComponent;
             if (icalParentComponent == nil) {
-                icalComponent = [[CGICalendarObject alloc] init];
+                icalComponent = [self newCalendarObject];
                 [self addObject:(CGICalendarObject *)icalComponent];
             }
             else {
-                icalComponent = [[CGICalendarComponent alloc] init];
+                icalComponent = [self newCalendarComponent];
                 [icalParentComponent addComponent:icalComponent];
             }
             [icalComponent setType:[icalContentLine value]];

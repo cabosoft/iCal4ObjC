@@ -29,6 +29,9 @@
 - (BOOL)parseWithString:(NSString *)string  error:(NSError **)error;
 - (BOOL)parseWithPath:(NSString *)path  error:(NSError **)error;
 
+- (CGICalendarObject*) newCalendarObject;
+- (CGICalendarComponent*) newCalendarComponent;
+
 - (void)addObject:(CGICalendarObject *)object;
 - (CGICalendarObject *)objectAtIndex:(NSUInteger)index;
 

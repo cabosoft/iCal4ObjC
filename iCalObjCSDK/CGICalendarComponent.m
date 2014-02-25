@@ -23,7 +23,7 @@
 
 + (id)componentWithType:(NSString *)aType
 {
-    return [[CGICalendarComponent alloc] initWithType:aType];
+    return [[self alloc] initWithType:aType];
 }
 
 + (id)event
